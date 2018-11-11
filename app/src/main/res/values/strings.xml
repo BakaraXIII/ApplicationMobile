@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Application2</string>
+    <string name="app_message">Je suis le message et je veux changer l\'image</string>
+    <string name="app_button_form">Formulaire</string>
+    <string name="app_button_return">Retour</string>
+</resources>
