@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Application2</string>
+    <string name="app_name">DAM</string>
     <string name="app_message">JOHN CENA</string>
     <string name="app_button_form">Form</string>
     <string name="app_button_return">Return</string>

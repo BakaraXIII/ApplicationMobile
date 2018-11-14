@@ -5,18 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class ActivitePrincipale extends AppCompatActivity {
 
     private Button btnformulaire;
+    private EditText et_envoi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("je me suis lancee");
         setContentView(R.layout.activity_main);
-        btnformulaire = findViewById(R.id.form);
 
+        //creation de liaison avec les variables du formulaire
+        btnformulaire = findViewById(R.id.form);
+        et_envoi = findViewById(R.id.envoi);
 
 
         btnformulaire.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +28,7 @@ public class ActivitePrincipale extends AppCompatActivity {
             public void onClick(View v) {
                 //Creation des intents pour passer d'un activité à l'autre.
                 final Intent intent = new Intent().setClass(ActivitePrincipale.this, Formulaire.class);
-                intent.putExtra("info","bonjour" );
+                intent.putExtra("info",et_envoi.getText().toString() );
                 startActivity(intent);
                 // Le finish fait que l'application se ferme.
                 // finish();

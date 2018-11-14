@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.awt.font.TextAttribute;
 
 public class Formulaire extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class Formulaire extends AppCompatActivity {
     private EditText prenom, nom, adresse;
     private RadioGroup grpsexe;
     private RadioButton sexe;
+    private TextView tw_accueil;
 
 
     @Override
@@ -40,9 +44,18 @@ public class Formulaire extends AppCompatActivity {
         nom = findViewById(R.id.nom);
         adresse = findViewById(R.id.adresse);
         grpsexe = findViewById(R.id.radiogroupsex);
+        tw_accueil = findViewById(R.id.twEnvoiPrincipal);
 
-        final Intent intent = new Intent().setClass(this, ActivitePrincipale.class);
-
+        // On recupere ce quil a ete mis dans le put extra
+        Bundle extras = getIntent().getExtras();
+        if(extras==null) {
+            System.out.println("on a pas d'extras");
+            tw_accueil.setText("IL N'Y A PAS D EXTRAS");
+        }
+        else {
+            //On change le text avec le blabla envoye depuis l accueil
+            tw_accueil.setText(extras.getString("info"));
+        }
 
         //Bouton de validation toast + affichage
         btnvalidation.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +110,10 @@ public class Formulaire extends AppCompatActivity {
         btnaccueil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent);
+                //on termine l activity
+                finish();
+                /*final Intent intent = new Intent().setClass(Formulaire.this, ActivitePrincipale.class);
+                startActivity(intent);*/
             }
         });
 
