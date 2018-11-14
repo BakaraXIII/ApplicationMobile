@@ -16,12 +16,18 @@ public class ActivitePrincipale extends AppCompatActivity {
         System.out.println("je me suis lancee");
         setContentView(R.layout.activity_main);
         btnformulaire = findViewById(R.id.form);
-        final Intent intent = new Intent().setClass(this, Formulaire.class);
+
+
 
         btnformulaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Creation des intents pour passer d'un activité à l'autre.
+                final Intent intent = new Intent().setClass(ActivitePrincipale.this, Formulaire.class);
+                intent.putExtra("info","bonjour" );
                 startActivity(intent);
+                // Le finish fait que l'application se ferme.
+                // finish();
             }
         });
     }
