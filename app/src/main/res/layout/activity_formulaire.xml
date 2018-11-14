@@ -39,7 +39,8 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Prénom" />
+            android:text="Prénom"
+            tools:text="Prénom" />
 
         <EditText
             android:id="@+id/adresse"
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|textPostalAddress"
             android:text="Adresse" />
     </LinearLayout>
 
@@ -98,10 +99,10 @@
         android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.235"
+        app:layout_constraintVertical_bias="0.278"
         tools:srcCompat="@android:drawable/star_big_on" />
 
     <Button
@@ -139,5 +140,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.914" />
+
+    <TextView
+        android:id="@+id/twEnvoiPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="envoi du principal"
+        app:layout_constraintBottom_toTopOf="@+id/validation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroupsex" />
 
 </android.support.constraint.ConstraintLayout>

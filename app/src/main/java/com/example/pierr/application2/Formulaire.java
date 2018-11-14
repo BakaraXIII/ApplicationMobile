@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class Formulaire extends AppCompatActivity {
@@ -21,8 +22,9 @@ public class Formulaire extends AppCompatActivity {
     private Picture photo;*/
     private Button btnaccueil;
     private Button btnvalidation;
-    private AlertDialog.Builder builder= new AlertDialog.Builder();
+    //private AlertDialog.Builder builder= new AlertDialog.Builder();
     private EditText prenom, nom, adresse;
+    private RadioGroup grpsexe;
     private RadioButton sexe;
 
 
@@ -37,7 +39,19 @@ public class Formulaire extends AppCompatActivity {
         prenom = findViewById(R.id.prenom);
         nom = findViewById(R.id.nom);
         adresse = findViewById(R.id.adresse);
-        //sexe = findViewById(R.id.radiogroupsex)
+
+        grpsexe = findViewById(R.id.radiogroupsex);
+        /*int checkRadioButtonId = grpsexe.getCheckedRadioButtonId();
+        if (checkRadioButtonId == -1){
+            Context context = getApplicationContext();
+            CharSequence text = "pas de sexe validé";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context,text,duration);
+            toast.show();
+        }
+        else{
+            sexe = findViewById(checkRadioButtonId);
+        }*/
         final Intent intent = new Intent().setClass(this, ActivitePrincipale.class);
 
 
@@ -45,26 +59,38 @@ public class Formulaire extends AppCompatActivity {
         btnvalidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //on vérifie si le sexe à été renseigné
+                int checkRadioButtonId = grpsexe.getCheckedRadioButtonId();
+                if (checkRadioButtonId == -1){
+                    Context context = getApplicationContext();
+                    CharSequence text = "pas de sexe validé";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                }
+                else{
+                    sexe = findViewById(checkRadioButtonId);
+                }
                 Context context = getApplicationContext();
-                CharSequence text = "En train de validé";
+                CharSequence text = "En train de valider";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
                 toast.show();
 
                 //Builder pour l'alert
-                builder.setTitle("Fiche renseignement")
-                        .setMessage("Prénom : "/* + prenom.getText() +" Nom : " + nom.getText() + "  Adresse : " + adresse.getText()*/)
-                        .show();
+                /*builder.setTitle("Fiche renseignement")
+                        .setMessage("Prénom : "/* + prenom.getText() +" Nom : " + nom.getText() + "  Adresse : " + adresse.getText()*///)
+                        //.show();
             }
         });
 
         //Bouton de retour
-        btnaccueil.setOnClickListener(new View.OnClickListener() {
+        /*btnaccueil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }
