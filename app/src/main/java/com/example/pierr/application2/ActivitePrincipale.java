@@ -10,7 +10,9 @@ import android.widget.EditText;
 public class ActivitePrincipale extends AppCompatActivity {
 
     private Button btnformulaire;
+    private Button btnboisson;
     private EditText et_envoi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class ActivitePrincipale extends AppCompatActivity {
 
         //creation de liaison avec les variables du formulaire
         btnformulaire = findViewById(R.id.form);
+        btnboisson = findViewById(R.id.btn_boisson);
         et_envoi = findViewById(R.id.envoi);
 
 
@@ -30,8 +33,17 @@ public class ActivitePrincipale extends AppCompatActivity {
                 final Intent intent = new Intent().setClass(ActivitePrincipale.this, Formulaire.class);
                 intent.putExtra("info",et_envoi.getText().toString() );
                 startActivity(intent);
-                // Le finish fait que l'application se ferme.
+                // Le finish fait que l'application se ferme car on est sur la première activité et il n'y en a pas d'autre avant
                 // finish();
+            }
+        });
+
+        btnboisson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creation des intents pour passer d'un activité à l'autre.
+                final Intent intent = new Intent().setClass(ActivitePrincipale.this, Boisson.class);
+                startActivity(intent);
             }
         });
     }
