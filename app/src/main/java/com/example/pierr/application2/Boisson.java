@@ -3,6 +3,7 @@ package com.example.pierr.application2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,9 +26,9 @@ public class Boisson extends AppCompatActivity {
         retour = findViewById(R.id.btn_retour);
         listView = findViewById(R.id.lw_boisson);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Boisson.this, android.R.layout.simple_list_item_1, boissons);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Boisson.this, android.R.layout.simple_list_item_1, boissons);
         listView.setAdapter(adapter);
-        //listView.setOnClickListener(new ChoixBoisson());
+        listView.setOnItemClickListener(new Choix());
 
 
         retour.setOnClickListener(new View.OnClickListener() {
@@ -36,15 +37,20 @@ public class Boisson extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
-        /*class ChoixBoisson() implements AdapterView.OnItemClickListener {
-            @Override
-            public void onItemClick(AdapterView<?> this.getParent()parent, View view, int position, long id) {
-                TextView textView = (TextView) findViewById(R.id.tv_boisson_choisi);
-                Toast.makeText(ActivityAdapter.this,textView.getText().toString(),Toast.LENGTH_SHORT).show();
+    class Choix implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // Si je laisse la vue j'ai cette erreur   java.lang.ClassCastException: android.support.v7.widget.AppCompatTextView cannot be cast to android.view.ViewGroup
+            //Faire un toString de la vue ne marche pas ça me donne du texte dandroid. TO DO recuperer la valeur de la liste peut etre avec la position
+            //ViewGroup viewGroup = (ViewGroup) view;
+            TextView textView = /*viewGroup.*/findViewById(R.id.tv_boisson_choisi);
+            textView.setText(view.toString());
+            Toast.makeText(Boisson.this,textView.getText().toString(),Toast.LENGTH_SHORT).show();
 
-            }
+        }
 
-        }*/
     }
 }
+
