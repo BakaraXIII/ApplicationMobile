@@ -11,6 +11,7 @@ public class ActivitePrincipale extends AppCompatActivity {
 
     private Button btnformulaire;
     private Button btnboisson;
+    private Button btnequipe;
     private EditText et_envoi;
 
 
@@ -23,13 +24,14 @@ public class ActivitePrincipale extends AppCompatActivity {
         //creation de liaison avec les variables du formulaire
         btnformulaire = findViewById(R.id.form);
         btnboisson = findViewById(R.id.btn_boisson);
+        btnequipe = findViewById(R.id.btn_equipe);
         et_envoi = findViewById(R.id.envoi);
 
 
         btnformulaire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Creation des intents pour passer d'un activité à l'autre.
+                //Intent pour aller dans l'activité Formulaire
                 final Intent intent = new Intent().setClass(ActivitePrincipale.this, Formulaire.class);
                 intent.putExtra("info",et_envoi.getText().toString() );
                 startActivity(intent);
@@ -41,8 +43,17 @@ public class ActivitePrincipale extends AppCompatActivity {
         btnboisson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Creation des intents pour passer d'un activité à l'autre.
+                //Intent pour aller dans l'activité boisson
                 final Intent intent = new Intent().setClass(ActivitePrincipale.this, Boisson.class);
+                startActivity(intent);
+            }
+        });
+
+        btnequipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent pour aller dans l'activité Equipe
+                final Intent intent = new Intent().setClass(ActivitePrincipale.this, Equipe.class);
                 startActivity(intent);
             }
         });
