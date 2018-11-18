@@ -42,11 +42,10 @@ public class Boisson extends AppCompatActivity {
     class Choix implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // Si je laisse la vue j'ai cette erreur   java.lang.ClassCastException: android.support.v7.widget.AppCompatTextView cannot be cast to android.view.ViewGroup
-            //Faire un toString de la vue ne marche pas ça me donne du texte dandroid. TO DO recuperer la valeur de la liste peut etre avec la position
-            //ViewGroup viewGroup = (ViewGroup) view;
             TextView textView = /*viewGroup.*/findViewById(R.id.tv_boisson_choisi);
-            textView.setText(view.toString());
+            //On prend l'item à la position qu'on a cliqué et on le change en toString.
+            textView.setText(parent.getItemAtPosition(position).toString());
+            //On récupère le text qu'on a mit dans le textView
             Toast.makeText(Boisson.this,textView.getText().toString(),Toast.LENGTH_SHORT).show();
 
         }
